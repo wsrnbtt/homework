@@ -1,57 +1,53 @@
-    #include <stdio.h>
+#include <stdio.h>
 
-    int GetSet( int data[] );  //prototype
+int GetSet(int data[]);
 
-    int main()
+int main()
+{
+    int data[20]; 
+    int num_count; 
+
+    num_count = GetSet(data);
+
+    printf("value (%d ): ", num_count);
+    if (num_count > 0)
     {
-        int data[20];
-        int num_count;
-
-        num_count = GetSet(data);
-
-        printf("value (%d ): ", num_count);
-        if (num_count >0)
+        for (int i = 0; i < num_count; i++)
         {
-
-            for (int i = 0; i < num_count; i++)
-            {
-                printf("%d ", data[i]);
-            }
-            printf("\n");
+            printf("%d ", data[i]);
         }
-        else 
-        {
-            printf("\n invalid\n");
-        }
-        
-        return 0; //จบฟังก์ชันmain
-
+        printf("\n");
+    }
+    else
+    {
+        printf("\n invalid\n");
     }
 
-    int GetSet(int data[])
-    {
-        int X; // ตัวแปร
-        printf("input value (max20): ");
+    return 0;
+}
 
-        
-        if (scanf("%d", &X) != 1 || X <= 0 || X >20) {
-            printf("! invalid value \n");
-            return 0; 
-        }
+int GetSet(int data[])
+{
+    int X; 
+    const int MAX_SIZE = 20; 
 
-        printf("%d :\n",X);
-        
-        for (int i = 0; i < X; i++)
-        {
+    printf("input value (max%d): ", MAX_SIZE); 
 
-            if (scanf("%d", &data[i]) != 1)
-            {
-                
-                printf("! invalid %d \n", i);
-                X = i;
-                break;
-            }
-        }
-
-        return X;  //คืนค่าจำนวนสมาชิกทั้งหมด
+    if (scanf("%d", &X) != 1 || X <= 0 || X > MAX_SIZE) {
+        return 0;
     }
+
+    printf("%d :\n", X); 
+
+    for (int i = 0; i < X; i++)
+    {
+        if (scanf("%d", &data[i]) != 1)
+        {
+            printf("! invalid %d \n", i); 
+            X = i; 
+            break;
+        }
+    }
+
+    return X;
+}
