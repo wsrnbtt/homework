@@ -1,21 +1,22 @@
 #include <stdio.h>
 
 int main()
-{
-    int num;
+{ 
+    int numberOfLines;  // จำนวนรอบที่ต้องการพิมพ์
 
-    scanf("%d", &num);
+    scanf("%d", &numberOfLines);  // รับค่าจากผู้ใช้
 
-    if (num <= 0)
+    if (numberOfLines <= 0)  // ตรวจสอบความถูกต้องของอินพุต
     {
         printf("error\n");
         return 1;
     }
 
-    for (int i = 1; i <= num; i++)
+    for (int i = 1; i <= numberOfLines; i++)   // พิมพ์ข้อความตามจำนวนที่กำหนด
     {
-        printf("Hello World\n");
+        printf("Hello World\n"); 
     }
 
-    return 0;
+    return 0;   // จบโปรแกรม
+
 }
