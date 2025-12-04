@@ -24,33 +24,34 @@
             printf("\n invalid\n");
         }
         
-        return 0; 
+        return 0; //จบฟังก์ชันmain
 
     }
 
     int GetSet(int data[])
     {
-        int N; 
+        int X; // ตัวแปร
         printf("input value (max20): ");
 
         
-        if (scanf("%d", &N) != 1 || N <= 0 || N >20) {
+        if (scanf("%d", &X) != 1 || X <= 0 || X >20) {
             printf("! invalid value \n");
             return 0; 
         }
 
-        printf("%d :\n",N);
+        printf("%d :\n",X);
         
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < X; i++)
         {
 
             if (scanf("%d", &data[i]) != 1)
             {
                 
                 printf("! invalid %d \n", i);
+                X = i;
                 break;
             }
         }
 
-        return N; 
+        return X;  //คืนค่าจำนวนสมาชิกทั้งหมด
     }
