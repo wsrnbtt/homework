@@ -9,8 +9,8 @@ int main()
     
     GetSet(data, &num);
 
-    printf("\nจำนวนสมาชิก (N): %d\n", num);
-    printf("สมาชิกทั้งหมด: ");
+    printf("\nNumber of elements: %d\n", num);
+    printf("Elements: ");
     for (int i = 0; i < num; i++) {
         printf("%d ", data[i]);
     }
@@ -22,7 +22,7 @@ int main()
 void GetSet(int arr[], int *num) {
     int N;
     
-    printf("จำนวนสมาชิก (max 20): ");
+    printf("Enter number of elements (max 20): ");
     if (scanf("%d", &N) != 1 || N <= 0 || N > 20) {
         *num = 0;
         printf("Invalid or out of range N. Operation stopped.\n");
@@ -31,7 +31,7 @@ void GetSet(int arr[], int *num) {
     
     printf("Enter %d integers:\n", N);
     for (int i = 0; i < N; i++) {
-        printf("ค่า #%d: ", i + 1);
+        printf("Element %d: ", i + 1);
 
         if (scanf("%d", &arr[i]) != 1) {
              printf("Invalid input detected. Stopping input.\n");
