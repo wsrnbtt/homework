@@ -2,17 +2,17 @@
 
 int main()
 {
-    int n;
+    int num;
 
-    scanf("%d", &n);
+    scanf("%d", &num);
 
-    if (n <= 0)
+    if (num <= 0)
     {
         printf("error\n");
         return 1;
     }
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= num; i++)
     {
         printf("Hello World\n");
     }
