@@ -1,18 +1,18 @@
 #include <stdio.h>
 
-void GetSet(int data[], int *num);
+void GetSet(int data[], int *num_count);
 
 int main()
 {
     int data[20];
-    int num;
+    int num_count;
 
-    GetSet(data, &num);
+    GetSet(data, &num_count);
 
-    printf("value (%d ): ", num);
-    if (num > 0)
+    printf("value (%d ): ", num_count);
+    if (num_count > 0)
     {
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < num_count; i++)
         {
             printf("%d ", data[i]);
         }
@@ -26,29 +26,29 @@ int main()
     return 0;
 }
 
-void GetSet(int data[], int *num)
+void GetSet(int data[], int *num_count)
 {
-    int N;
+    int X;
 
     printf("input value (max20): ");
 
-    if (scanf("%d", &N) != 1 || N <= 0 || N > 20) {
+    if (scanf("%d", &X) != 1 || X <= 0 || X > 20) {
         printf("! invalid value \n");
-        *num = 0; 
+        *num_count = 0; 
         return;
     }
 
-    printf("%d :\n", N);
+    printf("%d :\n", X);
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < X; i++)
     {
         if (scanf("%d", &data[i]) != 1)
         {
             printf("! invalid %d \n", i);
-            N = i; 
+            X = i; 
             break;
         }
     }
 
-    *num = N;
+    *num = X;
 }
