@@ -4,6 +4,7 @@ void GetSet(int arr[], int *num);
 
 int main() 
 {
+    
     int data[20];
     int num;
     
@@ -26,6 +27,7 @@ void GetSet(int arr[], int *num) {
     if (scanf("%d", &N) != 1 || N <= 0 || N > 20) {
         *num = 0;
         printf("Invalid or out of range N. Operation stopped.\n");
+        
         return;
     }
     
@@ -36,6 +38,7 @@ void GetSet(int arr[], int *num) {
         if (scanf("%d", &arr[i]) != 1) {
              printf("Invalid input detected. Stopping input.\n");
              N = i;
+            
              break;
         }
     }
