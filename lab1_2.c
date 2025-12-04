@@ -50,5 +50,5 @@ void GetSet(int data[], int *num_count)
         }
     }
 
-    *num = X;
+    *num_count = X;
 }
