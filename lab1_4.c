@@ -1,21 +1,26 @@
 #include <stdio.h>
 
-int GetSet( int [] ); //prototype
+int GetSet( int data[] );  //prototype
 
-int main(){
+int main()
+{
     int data[20];
     int num_count;
 
     num_count = GetSet(data);
-    
-    if (num_count >0){
-        printf("สมาชิกที่อ่านได้ (%d ตัว): ", num_count);
 
-        for (int i = 0; i < num_count; i++){
+    printf("สมาชิกที่อ่านได้ (%d ตัว): ", num_count);
+    if (num_count >0)
+    {
+
+        for (int i = 0; i < num_count; i++)
+        {
             printf("%d ", data[i]);
         }
         printf("\n");
-    }else {
+    }
+    else 
+    {
         printf("\n ไม่มีสมาชิกที่อ่านได้ หรือป้อนข้อมูลผิด\n");
     }
     
@@ -23,10 +28,10 @@ int main(){
 
 }
 
-int GetSet(int data[]){
+int GetSet(int data[])
+{
     int N; // ตัวแปร
 
-    printf("\n--- ฟังก์ชัน GetSet: ---- \n");
     printf("ป้อนจำนวนสมาชิก (max20): ");
 
     //ตรวจ input
@@ -36,14 +41,15 @@ int GetSet(int data[]){
     }
 
     printf("ป้อนค่าสมาชิก %d ตัว :\n",N);
+    //ลูปเพื่อรับสมาชิกแต่ละตัว
+    for (int i = 0; i < N; i++)
+    {
 
-    //ลูปเพื่อรับสมาชิกแต่บะตัว
-    for (int i = 0; i < N; i++){
-
-        if (scanf("%d", &data[i]) != 1) {
+        if (scanf("%d", &data[i]) != 1)
+        {
             //ถ้าผิดพลาด
             printf("! การป้อนข้อมูลขัดจังหวะ อ่านได้เพียง %d ตัว\n", i);
-            return i; //คืนค่าจำนวนที่อ่านได้
+            break;
         }
     }
 
