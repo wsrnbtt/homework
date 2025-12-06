@@ -1,54 +1,59 @@
 #include <stdio.h>
 
-int *GetSet(int *num);
+int *GetSet(int *num_count_prototype);
 
 int main()
 {
     int *data;
-    int num;
+    int num_count;
 
-    data = GetSet(&num);
+    data = GetSet(&num_count);
 
-    printf("N: %d\n", num);
+    printf("value (%d ): ", num_count);
 
-    if(num > 0)
+    if(num_count > 0 && data != NULL)
     {
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < num_count; i++)
         {
-            printf("%d", data[i]);
+            printf("%d ", data[i]);
         }
         printf("\n");
+    }
+    else
+    {
+        printf("\n invalid\n"); 
     }
 
     return 0;
 }
 
-int *GetSet(int *num)
+int *GetSet(int *num_count_prototype)
 {
-    static int arr[20];
-    int n;
+    static int data[20]; 
+    int X; 
+    const int MAX_SIZE = 20;
 
-    printf("input N (max20): ");
+    printf("input value (max%d): ", MAX_SIZE); 
 
-    if(scanf("%d",&n) != 1 || n <= 0 || n>20)
+    if(scanf("%d", &X) != 1 || X <= 0 || X > MAX_SIZE)
     {
-        *num = 0;
+        printf("! invalid value \n"); 
+        *num_count_prototype = 0;
         return NULL;
     }
 
-    printf("input %d integers:\n",n);
+    printf("%d :\n", X); 
 
-    for(int i =0; i<n; i++)
+    for(int i = 0; i < X; i++)
     {
-        if(scanf("%d",&arr[i]) != 1)
+        if(scanf("%d", &data[i]) != 1)
         {
-            n = i ;
+            printf("! invalid %d \n", i); 
+            X = i ; 
             break;
         }
     }
 
-    *num = n;
-
-    return arr;
+    *num_count_prototype = X;
+    return data;
 }
-
