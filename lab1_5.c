@@ -5,7 +5,8 @@ void GetMatrix(int value[], int *row, int *col);
 int main()
 {
     int data[50]; 
-    int row_count, col_count; 
+    int row_count;
+    int col_count; 
 
     GetMatrix(data, &row_count, &col_count);
 
@@ -16,7 +17,7 @@ int main()
         {
             for (int j = 0; j < col_count; j++)
             {
-                printf("%4d", data[i * col_count + j]);
+                printf("%4d", data[i * col_count + j]); 
             }
             printf("\n");
         }
@@ -33,46 +34,47 @@ int main()
     return 0;
 }
 
-void GetMatrix(int value[], int *row, int *col)
+void GetMatrix(int value[], int *row_ptr, int *col_ptr)
 {
-    int r, c; 
+    int row_val;
+    int col_val; 
     const int MAX_SIZE = 50; 
 
     printf("input rows (max %d): ", MAX_SIZE); 
-    if (scanf("%d", &r) != 1 || r <= 0 || r * 1 > MAX_SIZE)
+    if (scanf("%d", &row_val) != 1 || row_val <= 0 || row_val > MAX_SIZE)
     {
         printf("! invalid row value \n"); 
-        *row = 0;
-        *col = 0;
+        *row_ptr = 0;
+        *col_ptr = 0;
         return;
     }
     
-    printf("input cols (max %d): ", MAX_SIZE / r); 
-    if (scanf("%d", &c) != 1 || c <= 0 || r * c > MAX_SIZE)
+    printf("input cols (max %d): ", MAX_SIZE / row_val); 
+    if (scanf("%d", &col_val) != 1 || col_val <= 0 || row_val * col_val > MAX_SIZE)
     {
         printf("! invalid col value or size too large \n");
-        *row = 0;
-        *col = 0;
+        *row_ptr = 0;
+        *col_ptr = 0;
         return;
     }
 
-    *row = r;
-    *col = c;
+    *row_ptr = row_val;
+    *col_ptr = col_val;
 
-    printf("Enter elements (%d x %d):\n", r, c);
-    for (int i = 0; i < r; i++)
+    printf("Enter elements (%d x %d):\n", row_val, col_val);
+    for (int i = 0; i < row_val; i++)
     {
-        for (int j = 0; j < c; j++)
+        for (int j = 0; j < col_val; j++)
         {
-            int index = i * c + j;
+            int index = i * col_val + j;
 
             printf("Element [%d][%d]: ", i, j); 
             
             if (scanf("%d", &value[index]) != 1)
             {
                 printf("! invalid element input at [%d][%d]\n", i, j);
-                *row = 0;
-                *col = 0;
+                *row_ptr = 0;
+                *col_ptr = 0;
                 return; 
             }
         }
