@@ -2,6 +2,8 @@
 
 int *GetSet(int *num_count_prototype);
 
+void DisplaySet(const int *data, int num_count);
+
 int main()
 {
     int *data;
@@ -9,6 +11,13 @@ int main()
 
     data = GetSet(&num_count);
 
+    DisplaySet(data, num_count);
+
+    return 0;
+}
+
+void DisplaySet(const int *data, int num_count)
+{
     printf("value (%d ): ", num_count);
 
     if(num_count > 0 && data != NULL)
@@ -23,8 +32,6 @@ int main()
     {
         printf("\n invalid\n"); 
     }
-
-    return 0;
 }
 
 int *GetSet(int *num_count_prototype)
