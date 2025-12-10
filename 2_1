@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h> // include เพื่อใช้ strlen ครับ
+
+// ฟังก์ชันกลับด้าน
+void reverse(const char *str_in, char *str_out) // ใช้ Pointer ในการรับค่า
+{
+    // หาความยาวของสตริง
+    int len = strlen(str_in); // str_in สตริงต้นฉบับ
+
+    // ตั้งตัวชี้สำหรับการเขียน
+    char *write_ptr = str_out; // str_out สตริงสำหรับใช้เก็บผลที่กลับด้านแล้ว
+
+    // ตั้งตัวชี้สำหรับการอ่าน
+    // ให้เริ่มที่ตำแหน่งสุดท้ายของสตริง
+    const char *read_ptr = str_in + len - 1;
+
+    // ลูปหลัก อ่านจากหลังมาหน้า และเขียนจากหน้าไปหลัง
+    // วนลูปตามความยาวของสตริง
+    for (int i = 0; i < len; i++)
+    {
+        *write_ptr = *read_ptr; // คัดลอกค่าที่ชี้อยู่
+        write_ptr++;            // เลื่อนตัวชี้เขียนไปข้างหน้า
+        read_ptr--;             // เลื่อนตัวชี้อ่านถอยหลัง
+    }
+
+    //ปิดท้ายด้วย Null Character
+    *write_ptr = '\0';
+}
+
+
+
+int main()
+{
+
+    char text_1[50] = "I Love You"; //คำตั้งต้น
+    char out_1[50];                 //จองพื้นที่ไว้เก็บผล
+
+    reverse(text_1, out_1);
+
+    printf("Input:  \"%s\"\n", text_1);
+    printf("Output: \"%s\"\n\n", out_1); // ผลลัพธ์ต้องเป็น uoY evoL I
+
+    //ทดสอบรอบที่ 2
+    char text_2[50] = "Hello World"; //คำตั้งต้น
+    char out_2[50];
+
+    reverse(text_2, out_2);
+    
+    printf("Input:  \"%s\"\n", text_2);
+    printf("Output: \"%s\"\n", out_2); // ผลลัพธ์ต้องเป็น dlroW olleH
+
+    return 0; // จบโปรแกรม ส่งคืนค่า0
+}
