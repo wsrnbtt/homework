@@ -4,20 +4,28 @@
 char *reverse(char *dest, const char str1[])
 {
     int len = strlen(str1);
-
-    if (len >= 50)
+    
+    if (len >= 50) 
     {
         return NULL;
     }
 
-    int i;
+    // คัดลอกก่อน แล้วสลับภายใน dest
+    strcpy(dest, str1);
+    
+    int left = 0;
+    int right = len - 1;
+    char temp;
 
-    for (i = 0; i < len; i++)
+    while (left < right) 
     {
-        dest[i] = str1[len - 1 - i];
+        temp = dest[left];
+        dest[left] = dest[right];
+        dest[right] = temp;
+        
+        left++;
+        right--;
     }
-
-    dest[len] = '\0';
 
     return dest;
 }
@@ -28,23 +36,23 @@ int main()
     char out_buffer[50];
     char *out = reverse(out_buffer, text);
 
-    printf("Input:  \"%s\"\n", text);
-
+    printf("Input: \"%s\"\n", text);
+    
     if (out != NULL)
     {
-        printf("Output: \"%s\"\n", out);
+        printf("Output: \"%s\"\n\n", out);
     }
     else
     {
-        printf("Error: Input string too long (Limit 49 chars).\n");
+        printf("Error: Input string too long (Limit 49 chars).\n\n");
     }
 
     char text2[50] = "Hello World";
     char out2_buffer[50];
     char *out2 = reverse(out2_buffer, text2);
 
-    printf("Input:  \"%s\"\n", text2);
-
+    printf("Input: \"%s\"\n", text2);
+    
     if (out2 != NULL)
     {
         printf("Output: \"%s\"\n", out2);
