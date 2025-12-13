@@ -1,27 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 
-
 char *reverse(char *dest, const char str1[])
 {
-
     int len = strlen(str1);
-    
 
     if (len >= 50)
     {
         return NULL;
     }
 
+    int i; 
 
-    int i, j;
-
-    for (i = len - 1, j = 0; i >= 0; i--, j++)
+    for (i = 0; i < len; i++)
     {
-        
-        dest[j] = str1[i];
+        dest[i] = str1[len - 1 - i];
     }
-
 
     dest[len] = '\0';
 
@@ -30,34 +24,30 @@ char *reverse(char *dest, const char str1[])
 
 int main()
 {
-   
     char text[50] = "I Love You";
-    char out_buffer[50]; 
+    char out_buffer[50];
     char *out = reverse(out_buffer, text);
 
-    printf("--- ทดสอบรอบ 1 ---\n");
-    printf("Input:  \"%s\"\n", text);
-    
+    printf("Input:  \"%s\"\n", text); 
+
     if (out != NULL)
     {
-        printf("Output: \"%s\"\n", out); // ผลลัพธ์: "uoY evoL I"
+        printf("Output: \"%s\"\n", out);
     }
     else
     {
         printf("Error: Input string too long (Limit 49 chars).\n");
     }
 
-
     char text2[50] = "Hello World";
-    char out2_buffer[50]; 
+    char out2_buffer[50];
     char *out2 = reverse(out2_buffer, text2);
 
-    printf("\n--- ทดสอบรอบ 2 ---\n");
-    printf("Input:  \"%s\"\n", text2);
-    
+    printf("Input:  \"%s\"\n", text2); 
+
     if (out2 != NULL)
     {
-        printf("Output: \"%s\"\n", out2); // ผลลัพธ์: "dlroW olleH"
+        printf("Output: \"%s\"\n", out2);
     }
     else
     {
