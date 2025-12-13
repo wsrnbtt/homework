@@ -1,19 +1,16 @@
 #include <stdio.h>
-#include <string.h> 
-
+#include <string.h>
 
 void reverse(char str1[], char str2[])
 {
-
     int len = strlen(str1);
-    int i, j;
+    int i; 
 
-
-    for (i = len - 1, j = 0; i >= 0; i--, j++)
+    for (i = 0; i < len; i++)
     {
-        str2[j] = str1[i]; 
-    }
 
+        str2[i] = str1[len - 1 - i];
+    }
 
     str2[len] = '\0';
 }
@@ -26,17 +23,16 @@ int main()
 
     reverse(text, out);
 
-    printf("Input: \"%s\"\n", text);
-    printf("Output: \"%s\"\n\n", out); // ผลที่ได้ต้องเป็น uoY evoL I
-
+    printf("Input:  \"%s\"\n", text);
+    printf("Output: \"%s\"\n\n", out);
 
     char text2[50] = "Hello World";
     char out2[50];
 
     reverse(text2, out2);
     
-    printf("Input: \"%s\"\n", text2);
-    printf("Output: \"%s\"\n", out2); // ผลที่ได้ต้องเป็น dlroW olleH
+    printf("Input:  \"%s\"\n", text2);
+    printf("Output: \"%s\"\n", out2);
 
-    return 0; // จบโปรแกรม
+    return 0;
 }
