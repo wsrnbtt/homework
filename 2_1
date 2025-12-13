@@ -1,53 +1,38 @@
 #include <stdio.h>
-#include <string.h> // include เพื่อใช้ strlen ครับ
+#include <string.h>
 
-// ฟังก์ชันกลับด้าน
-void reverse(const char *str_in, char *str_out) // ใช้ Pointer ในการรับค่า
+void reverse(char s1[], char s2[])
 {
-    // หาความยาวของสตริง
-    int len = strlen(str_in); // str_in สตริงต้นฉบับ
+    int s_len = strlen(s1);
+    int i, j;
 
-    // ตั้งตัวชี้สำหรับการเขียน
-    char *write_ptr = str_out; // str_out สตริงสำหรับใช้เก็บผลที่กลับด้านแล้ว
-
-    // ตั้งตัวชี้สำหรับการอ่าน
-    // ให้เริ่มที่ตำแหน่งสุดท้ายของสตริง
-    const char *read_ptr = str_in + len - 1;
-
-    // ลูปหลัก อ่านจากหลังมาหน้า และเขียนจากหน้าไปหลัง
-    // วนลูปตามความยาวของสตริง
-    for (int i = 0; i < len; i++)
+    for (i = s_len - 1, j = 0; i >= 0; i--, j++)
     {
-        *write_ptr = *read_ptr; // คัดลอกค่าที่ชี้อยู่
-        write_ptr++;            // เลื่อนตัวชี้เขียนไปข้างหน้า
-        read_ptr--;             // เลื่อนตัวชี้อ่านถอยหลัง
+        s2[j] = s1[i];
     }
 
-    //ปิดท้ายด้วย Null Character
-    *write_ptr = '\0';
+    s2[s_len] = '\0';
 }
-
-
 
 int main()
 {
+    // --- ทดสอบรอบที่ 1 ---
+    char test1_input[50] = "I Love You"; 
+    char test1_output[50];
 
-    char text_1[50] = "I Love You"; //คำตั้งต้น
-    char out_1[50];                 //จองพื้นที่ไว้เก็บผล
+    reverse(test1_input, test1_output);
 
-    reverse(text_1, out_1);
+    printf("Input: \"%s\"\n", test1_input);
+    printf("Output: \"%s\"\n\n", test1_output); 
 
-    printf("Input:  \"%s\"\n", text_1);
-    printf("Output: \"%s\"\n\n", out_1); // ผลลัพธ์ต้องเป็น uoY evoL I
+    // --- ทดสอบรอบที่ 2 ---
+    char test2_input[50] = "Hello World";
+    char test2_output[50];
 
-    //ทดสอบรอบที่ 2
-    char text_2[50] = "Hello World"; //คำตั้งต้น
-    char out_2[50];
-
-    reverse(text_2, out_2);
+    reverse(test2_input, test2_output);
     
-    printf("Input:  \"%s\"\n", text_2);
-    printf("Output: \"%s\"\n", out_2); // ผลลัพธ์ต้องเป็น dlroW olleH
+    printf("Input: \"%s\"\n", test2_input);
+    printf("Output: \"%s\"\n", test2_output); 
 
-    return 0; // จบโปรแกรม ส่งคืนค่า0
+    return 0; 
 }
