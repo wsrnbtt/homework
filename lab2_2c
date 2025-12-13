@@ -10,7 +10,7 @@ char *reverse(char *dest, const char str1[])
         return NULL;
     }
 
-    int i; // ตัวนับลูป
+    int i;
 
     for (i = 0; i < len; i++)
     {
@@ -28,7 +28,6 @@ int main()
     char out_buffer[50];
     char *out = reverse(out_buffer, text);
 
-    printf("--- Test Case 1 ---\n");
     printf("Input:  \"%s\"\n", text);
 
     if (out != NULL)
@@ -44,7 +43,6 @@ int main()
     char out2_buffer[50];
     char *out2 = reverse(out2_buffer, text2);
 
-    printf("\n--- Test Case 2 ---\n");
     printf("Input:  \"%s\"\n", text2);
 
     if (out2 != NULL)
