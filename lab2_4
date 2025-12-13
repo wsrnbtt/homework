@@ -38,8 +38,8 @@ int main()
 void explode(char str1[], char splitter, char str2[][10], int *count)
 {
     int len = strlen(str1);
-    int row_count = 0;
-    int col_count = 0;
+    int row = 0;
+    int col = 0;
     int i;
 
     for (i = 0; i <= len; i++)
@@ -48,21 +48,21 @@ void explode(char str1[], char splitter, char str2[][10], int *count)
         {
             str2[row_count][col_count] = '\0';
             
-            row_count++;
-            col_count = 0;
+            row++;
+            col = 0;
             
-            if (row_count >= 20) break;
+            if (row >= 20) break;
         }
         else
         {
-            str2[row_count][col_count] = str1[i];
-            col_count++;
+            str2[row][col] = str1[i];
+            col++;
             
-            if (col_count >= 9)
+            if (col >= 9)
             {
-                str2[row_count][9] = '\0';
-                row_count++;
-                col_count = 0;
+                str2[row][9] = '\0';
+                row++;
+                col = 0;
                 
                 while (i < len && str1[i] != splitter) { i++; }
                 i--;
@@ -70,5 +70,5 @@ void explode(char str1[], char splitter, char str2[][10], int *count)
         }
     }
 
-    *count = row_count;
+    *count = row;
 }
