@@ -3,59 +3,51 @@
 
 char *reverse(char *dest, const char str1[])
 {
-    int len = strlen(str1);
+    int src_len = strlen(str1);
+    int i;
     
-    if (len >= 50) 
+    if (src_len >= 50) 
     {
         return NULL;
     }
 
-    // คัดลอกก่อน แล้วสลับภายใน dest
-    strcpy(dest, str1);
-    
-    int left = 0;
-    int right = len - 1;
-    char temp;
-
-    while (left < right) 
+    for (i = 0; i < src_len; i++) 
     {
-        temp = dest[left];
-        dest[left] = dest[right];
-        dest[right] = temp;
-        
-        left++;
-        right--;
+        // str1[ความยาว - 1 - i]
+        dest[i] = str1[src_len - 1 - i]; 
     }
+
+    dest[src_len] = '\0';
 
     return dest;
 }
 
 int main()
 {
-    char text[50] = "I Love You";
-    char out_buffer[50];
-    char *out = reverse(out_buffer, text);
+    char input_1[50] = "I Love You";
+    char result_1[50];
+    char *output_ptr_1 = reverse(result_1, input_1);
 
-    printf("Input: \"%s\"\n", text);
+    printf("Input: \"%s\"\n", input_1);
     
-    if (out != NULL)
+    if (output_ptr_1)
     {
-        printf("Output: \"%s\"\n\n", out);
+        printf("Output: \"%s\"\n\n", output_ptr_1);
     }
     else
     {
         printf("Error: Input string too long (Limit 49 chars).\n\n");
     }
 
-    char text2[50] = "Hello World";
-    char out2_buffer[50];
-    char *out2 = reverse(out2_buffer, text2);
+    char input_2[50] = "Hello World";
+    char result_2[50];
+    char *output_ptr_2 = reverse(result_2, input_2);
 
-    printf("Input: \"%s\"\n", text2);
+    printf("Input: \"%s\"\n", input_2);
     
-    if (out2 != NULL)
+    if (output_ptr_2)
     {
-        printf("Output: \"%s\"\n", out2);
+        printf("Output: \"%s\"\n", output_ptr_2);
     }
     else
     {
