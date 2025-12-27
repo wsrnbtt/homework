@@ -7,15 +7,23 @@ struct student {
     float gpa;
 };
 
-void upgrade(struct student child) 
+void upgrade(struct student info) 
 {
-    if (child.sex == 'M') 
+    
+    switch (info.sex) 
     {
-        child.gpa *= 1.10f;
-    } 
-    else if (child.sex == 'F') 
-    {
-        child.gpa *= 1.20f;
+        case 'M':
+            // เพิ่มเกรด 10% สำหรับผู้ชาย
+            info.gpa += (info.gpa * 0.10f);
+            break;
+        
+        case 'F':
+            // เพิ่มเกรด 20% สำหรับผู้หญิง
+            info.gpa += (info.gpa * 0.20f);
+            break;
+
+        default:
+            break;
     }
 }
 
@@ -24,7 +32,7 @@ int main()
     struct student aboy;
     
     aboy.sex = 'M';
-    aboy.gpa = 3.00;
+    aboy.gpa = 3.00f;
 
     upgrade(aboy);
 
