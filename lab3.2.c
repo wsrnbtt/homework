@@ -13,29 +13,27 @@ int main()
 {
     struct student aboy;
 
+    // กำหนดค่าเริ่มต้นให้กับตัวแปร aboy
     aboy.sex = 'M';
     aboy.gpa = 3.00;
 
-    // ส่งที่อยู่ของ aboy ไปให้ฟังก์ชัน
     upgrade(&aboy);
 
-    // แสดงผล GPA ที่คำนวณเสร็จแล้ว
+    // แสดงผลลัพธ์ทศนิยม 2 ตำแหน่ง
     printf("%.2f", aboy.gpa);
 
     return 0;
 }
 
-// ฟังก์ชันสำหรับเพิ่ม GPA โดยรับเป็นตัวชี้(Pointer)
 void upgrade(struct student *child) 
 {
-    // ใช้ if-else เช็คเงื่อนไขตามเพศ
     if (child->sex == 'M') 
     {
-        child->gpa *= 1.10f; 
+        child->gpa = child->gpa + (child->gpa * 0.10);
     } 
     else if (child->sex == 'F') 
     {
-        // สำหรับผู้หญิงเพิ่ม 20%
-        child->gpa *= 1.20f;
+        // เพิ่ม 20% สำหรับนักเรียนหญิง
+        child->gpa = child->gpa + (child->gpa * 0.20);
     }
 }
