@@ -1,39 +1,33 @@
 #include <stdio.h>
 
 int main() {
-    float debt, pay_monthly, interest_val ;
-    int count_m = 0 ;
-    
-    float rate = 0.01 ;
-    float penalty_fee = 10.0 ;
+    float balance, monthly_pay, m_interest;
+    int months = 0;
 
-    //รับค่าเงินต้นและยอดผ่อน
-    if ( scanf( "%f %f", &debt, &pay_monthly ) != 2 ) {
-        return 1 ;
+    if (scanf("%f %f", &balance, &monthly_pay) != 2) {
+        return 1;
     }
 
-    //วนลูปจนกว่าหนี้จะหมด
-    while ( debt > 0 ) {
-        //คำนวณดอกเบี้ยรายเดือน
-        interest_val = debt * rate ;
-        debt = debt + interest_val ;
+    while (balance > 0) {
+        m_interest = balance * 0.01;
+        balance += m_interest;
 
-        //เช็คเงื่อนไขค่าปรับ
-        if ( pay_monthly < interest_val ) {
-            debt = debt + penalty_fee ;
+        if (monthly_pay < m_interest) {
+            balance += 10.0;
         }
 
-        //หักยอดผ่อนชำระ
-        debt = debt - pay_monthly ;
+        balance -= monthly_pay;
+        months++;
 
-        count_m++ ;
-        
-        //แสดงสถานะรายเดือน
-        printf( "Month %d: Remaining Principal = %.2f\n", count_m, debt ) ;
+        printf("Month %d: Remaining Principal = %.2f\n", months, balance);
+
+        if (months >= 10 && balance > 0) {
+            printf("Loan settled in 10+ months.\n");
+            return 0;
+        }
     }
 
-    // สรุปจำนวนเดือน
-    printf( "Loan settled in %d months.\n", count_m ) ;
+    printf("Loan settled in %d months.\n", months);
 
-    return 0 ;
+    return 0;
 }
