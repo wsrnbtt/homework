@@ -25,6 +25,5 @@ int main() {
             printf( "Invalid Day Code\n" ) ;
             break ;
     }
-
     return 0 ;
 }
