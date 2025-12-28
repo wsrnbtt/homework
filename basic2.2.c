@@ -16,7 +16,7 @@ int main() {
         current_cost = price * qty ;
 
         if ( price >= 1000.00 ) {
-            current_cost *= 0.90 ; // ใช้ตัวดำเนินการแบบย่อเพื่อลดความเหมือน
+            current_cost *= 0.90 ;
         }
 
         total_sum += current_cost ;
