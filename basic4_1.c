@@ -21,7 +21,7 @@ int main() {
             break;
         }
     }
-    printf("----------------------\n");
+    printf("--Output--\n");
     printReverse(data_list, total_elements);
 
     return 0;
