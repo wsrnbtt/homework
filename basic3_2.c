@@ -16,7 +16,6 @@ int main() {
     struct Student list[total_students];
 
     for (idx = 0; idx < total_students; idx++) {
-        // รับค่า: ID, Score, Name
         if (scanf("%d %f %s", &list[idx].id, &list[idx].gpa, list[idx].name) != 3) {
             break;
         }
