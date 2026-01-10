@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+struct studentNode {
+    char name[20];
+    int age;
+    char sex;
+    float gpa;
+    struct studentNode *next;
+};
+
+struct studentNode pool[10];
+int p_idx = 0;
+
+void saveNode(struct studentNode *child, char n[], int a, char s, float g);
+void GoNext2(struct studentNode ***walk); // รับ Triple Pointer เพื่อเปลี่ยนค่า now2
+
+int main() {
+    struct studentNode *start, *now1, **now2;
+
+    start = &pool[p_idx++];
+    saveNode(start, "one", 6, 'M', 3.11);
+
+    start->next = &pool[p_idx++];
+    saveNode(start->next, "two", 8, 'F', 3.22);
+
+    start->next->next = &pool[p_idx++];
+    saveNode(start->next->next, "three", 10, 'M', 3.33);
+
+    start->next->next->next = &pool[p_idx++];
+    saveNode(start->next->next->next, "four", 12, 'F', 3.44);
+    start->next->next->next->next = NULL;
+
+    now1 = start;
+    now2 = &now1;
+
+    printf("now2 points to %s\n", (*now2)->name);
+
+    GoNext2(&now2); 
+
+    printf("now2 points to %s\n", (*now2)->name);
+
+    return 0;
+}
+
+void GoNext2(struct studentNode ***walk) {
+    if (walk != NULL && *walk != NULL && (**walk) != NULL && (**walk)->next != NULL) {
+
+        **walk = (**walk)->next; 
+
+        printf("Moved to: %s\n", (**walk)->name);
+        printf("Age: %d, GPA: %.2f\n", (**walk)->age, (**walk)->gpa);
+    }
+}
+
+void saveNode(struct studentNode *child, char n[], int a, char s, float g) {
+    int i = 0;
+    while (n[i] != '\0') {
+        child->name[i] = n[i];
+        i++;
+    }
+    child->name[i] = '\0';
+    child->age = a;
+    child->sex = s;
+    child->gpa = g;
+}
